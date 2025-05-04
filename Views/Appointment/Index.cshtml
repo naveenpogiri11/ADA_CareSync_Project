@@ -1,4 +1,7 @@
-﻿@model List<CareSync.Models.Appointment>
+﻿@model List<CareSync.Models.ViewModels.AppointmentDisplayViewModel>
+
+
+
 
 @{
     ViewData["Title"] = "Manage Appointments";
@@ -10,8 +13,8 @@
     <table class="table table-bordered">
         <thead class="table-dark">
             <tr>
-                <th>Patient ID</th>
-                <th>Doctor ID</th>
+                <th>Patient Name</th>
+                <th>Doctor Name</th>
                 <th>Date</th>
                 <th>Time</th>
                 <th>Actions</th>
@@ -21,10 +24,11 @@
             @foreach (var appt in Model)
             {
                 <tr>
-                    <td>@appt.PatientID</td>
-                    <td>@appt.DoctorID</td>
-                    <td>@appt.AppointmentDate.ToShortDateString()</td>
-                    <td>@appt.AppointmentTime</td>
+                    <td>@appt.PatientName</td>
+                    <td>@appt.DoctorName</td>
+                    <td>@appt.Date.ToString("yyyy-MM-dd")</td>
+                    <td>@appt.Time</td>
+                    <td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@appt.AppointmentID" class="btn btn-warning btn-sm">Edit</a>
                         <a asp-action="Details" asp-route-id="@appt.AppointmentID" class="btn btn-info btn-sm">Details</a>

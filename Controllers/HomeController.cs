@@ -14,7 +14,7 @@ namespace CareSync.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly DoctorService _doctorService;
         private readonly HttpClient _httpClient;
-        private readonly string BASE_URL = "https://data.cms.gov/provider-data/api/1/datastore/query/mj5m-pzi6/0?limit=100&offset=0&count=true&results=true&schema=true&keys=true&format=json&rowIds=false";
+        private readonly string BASE_URL = "https://data.cms.gov/provider-data/api/1/datastore/query/mj5m-pzi6/0?limit=500&offset=0&count=true&results=true&schema=true&keys=true&format=json&rowIds=false";
 
         public HomeController(ILogger<HomeController> logger, DoctorService doctorService, CareSyncDbContext context)
         {

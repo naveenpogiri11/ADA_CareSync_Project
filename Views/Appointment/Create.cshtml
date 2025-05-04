@@ -45,12 +45,26 @@
 
         <div class="mb-3">
             <label>Appointment Date</label>
-            <input asp-for="Appointment.AppointmentDate" type="date" class="form-control" required />
+            <input asp-for="Appointment.AppointmentDate" type="date"
+                   min="@DateTime.Today.ToString("yyyy-MM-dd")"
+                   max="@DateTime.Today.AddMonths(3).ToString("yyyy-MM-dd")"
+                   class="form-control" required />
+
         </div>
 
         <div class="mb-3">
             <label>Appointment Time</label>
-            <input asp-for="Appointment.AppointmentTime" type="time" class="form-control" required />
+            <select asp-for="Appointment.AppointmentTime" class="form-select" required>
+                <option value="">-- Select Time --</option>
+                @{
+                    for (int hour = 8; hour <= 18; hour++) // 8 AM to 6 PM
+                    {
+                        string time = new DateTime(1, 1, 1, hour, 0, 0).ToString("HH:mm");
+                        <option value="@time">@time</option>
+                    }
+                }
+            </select>
+
         </div>
 
         <button type="submit" class="btn btn-success">Book</button>

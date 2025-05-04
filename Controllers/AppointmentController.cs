@@ -12,32 +12,58 @@ namespace CareSync.Controllers
         private readonly CareSyncDbContext _context;
         private readonly DoctorService _doctorService;
 
+        
+
+
         public AppointmentController(CareSyncDbContext context, DoctorService doctorService)
         {
             _context = context;
             _doctorService = doctorService;
+
+
+        }
+
+        private string GenerateRandomId(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var random = new Random();
+            return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
         // READ: Show all appointments
         public IActionResult Index()
         {
-            var appointments = _context.Appointments.ToList();
+            var appointments = _context.Appointments.Join(_context.Patients, a => a.PatientID, p => p.PatientID, (a, p) => new { a, p })
+        .Join(_context.Doctors, ap => ap.a.DoctorID, d => d.DoctorID, (ap, d) => new AppointmentDisplayViewModel{
+            AppointmentID = ap.a.AppointmentID,
+            PatientName = ap.p.Name,
+            DoctorName = d.FirstName,
+            Date = ap.a.AppointmentDate,
+            Time = ap.a.AppointmentTime
+        }).ToList();
             return View(appointments);
         }
 
         // CREATE: Show Create Form
         public IActionResult Create()
         {
+            var doctors = _doctorService.GetAllDoctors(); // fetch from in-memory API-loaded doctors
+
             var viewModel = new BookAppointmentViewModel
             {
-                Problems = _context.Doctors.Select(d => d.PrimarySpecialty).Distinct().ToList(),
-                SuggestedDoctors = _context.Doctors.ToList(),
+                Problems = doctors.Select(d => d.PrimarySpecialty)
+                                  .Where(s => !string.IsNullOrEmpty(s))
+                                  .Distinct()
+                                  .ToList(),
+
+                SuggestedDoctors = doctors,
+
                 Appointment = new Appointment(),
                 Patient = new Patient()
             };
 
             return View(viewModel);
-        }
+        } 
 
         // CREATE: Save New Appointment
         [HttpPost]
@@ -47,7 +73,7 @@ namespace CareSync.Controllers
             // Check if doctor already exists
             // Step 1: Get doctor info from DoctorService in memory
             var matchingDoctor = _doctorService.GetAllDoctors()
-                                  .FirstOrDefault(d => d.PrimarySpecialty == model.Appointment.DoctorID);
+                                  .FirstOrDefault(d => d.DoctorID == model.Appointment.DoctorID);
 
             if (matchingDoctor == null)
             {
@@ -82,7 +108,7 @@ namespace CareSync.Controllers
 
             var newPatient = new Patient
             {
-                PatientID = Guid.NewGuid().ToString(),
+                PatientID = GenerateRandomId(6),
                 Name = model.Patient.Name,
                 ContactNumber = model.Patient.ContactNumber
             };
@@ -93,7 +119,7 @@ namespace CareSync.Controllers
 
             var newAppointment = new Appointment
             {
-                AppointmentID = Guid.NewGuid().ToString(),
+                AppointmentID = GenerateRandomId(6),
                 PatientID = newPatient.PatientID,
                 DoctorID = model.Appointment.DoctorID,
                 AppointmentDate = model.Appointment.AppointmentDate,
