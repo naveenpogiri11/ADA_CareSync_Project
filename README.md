@@ -1,13 +1,13 @@
-# 💡 CareSync – Smart Appointment Scheduling System
+# CareSync – Smart Appointment Scheduling System
 
 A full-stack ASP.NET Core MVC application for managing doctor appointments, built with clean architectural layering and hosted on Azure.
 
-🔗 **Live Demo**: [CareSync App](https://myappdemo123-f4deahbgcae9f4aw.canadacentral-01.azurewebsites.net/)  
-📦 **GitHub Repo**: [ADA_CareSync_Project](https://github.com/naveenpogiri11/ADA_CareSync_Project)
+**Live Demo**: [CareSync App](https://myappdemo123-f4deahbgcae9f4aw.canadacentral-01.azurewebsites.net/)  
+ **GitHub Repo**: [ADA_CareSync_Project](https://github.com/naveenpogiri11/ADA_CareSync_Project)
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 - **MVC Pattern**: Models (EF Core), Views (Razor), Controllers (Routing/Logic)
 - **Service Layer**: `DoctorService` handles caching and business logic
@@ -16,7 +16,7 @@ A full-stack ASP.NET Core MVC application for managing doctor appointments, buil
 
 ---
 
-## 🌐 API Endpoints
+## API Endpoints
 
 | Method | Endpoint                | Description                          |
 |--------|-------------------------|--------------------------------------|
@@ -27,13 +27,13 @@ A full-stack ASP.NET Core MVC application for managing doctor appointments, buil
 
 ---
 
-## 🧩 Data Model (ERD)
+## Data Model (ERD)
 
 ![ERD](https://github.com/user-attachments/assets/0abd71d1-bca4-4c0f-88fa-19bbe91f549d)
 
 ---
 
-## 🔁 CRUD Implementation
+## CRUD Implementation
 
 - **Create**: Users can book appointments with dynamically loaded doctor lists.
 - **Read**: Appointments are listed using `AppointmentDisplayViewModel`.
@@ -42,7 +42,7 @@ A full-stack ASP.NET Core MVC application for managing doctor appointments, buil
 
 ---
 
-## ⚙️ Notable Technical Challenges & Solutions
+## Notable Technical Challenges & Solutions
 
 - **Azure Integration**:  
   Set up App Service and SQL Database hosting with secure connection strings.
@@ -64,7 +64,7 @@ A full-stack ASP.NET Core MVC application for managing doctor appointments, buil
 
 ---
 
-## 🚀 Future Enhancements
+## Future Enhancements
 
 - User authentication and login for patients
 - Calendar-based scheduling with real-time slot updates
