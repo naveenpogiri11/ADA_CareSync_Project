@@ -29,11 +29,13 @@
                     <td>@appt.Date.ToString("yyyy-MM-dd")</td>
                     <td>@appt.Time</td>
                     <td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@appt.AppointmentID" class="btn btn-warning btn-sm">Edit</a>
-                        <a asp-action="Details" asp-route-id="@appt.AppointmentID" class="btn btn-info btn-sm">Details</a>
-                        <a asp-action="Delete" asp-route-id="@appt.AppointmentID" class="btn btn-danger btn-sm">Delete</a>
+                        <div style="display: flex; gap: 6px;">
+                            <a asp-action="Edit" asp-route-id="@appt.AppointmentID" class="btn-edit btn-sm">Edit</a>
+                            <a asp-action="Details" asp-route-id="@appt.AppointmentID" class="btn-details btn-sm">Details</a>
+                            <a asp-action="Delete" asp-route-id="@appt.AppointmentID" class="btn-delete btn-sm">Delete</a>
+                        </div>
                     </td>
+
                 </tr>
             }
         </tbody>
