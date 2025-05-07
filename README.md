@@ -38,7 +38,7 @@ A full-stack ASP.NET Core MVC application for managing doctor appointments, buil
 - **Create**: Users can book appointments with dynamically loaded doctor lists.
 - **Read**: Appointments are listed using `AppointmentDisplayViewModel`.
 - **Update**: (Planned or partial) Update existing appointment data.
-- **Delete**: (If implemented) Remove appointments.
+- **Delete**: Remove appointments.
 
 ---
 
