@@ -24,7 +24,6 @@ A full-stack ASP.NET Core MVC application for managing doctor appointments, buil
 | POST   | `/Appointment/Create`   | Submits a new appointment            |
 | GET    | `/Appointment/Index`    | Lists all appointments               |
 | GET    | `/Home/Chart`           | Loads chart data for appointments    |
-| GET    | `/Account/Login` / `/Logout` | Handles login/logout (if applicable) |
 
 ---
 
