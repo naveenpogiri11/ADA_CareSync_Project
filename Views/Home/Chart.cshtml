@@ -2,103 +2,91 @@
     ViewData["Title"] = ViewBag.PageTitle;
 }
 
-<div class="container mt-5">
-    <h2 class="mb-4">@ViewBag.PageTitle</h2>
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
 
-    <div class="row mb-5">
-        <div class="col-md-6">
-            <h5>Appointments Per Doctor</h5>
-            <canvas id="barChart" height="250"></canvas>
-        </div>
-        <div class="col-md-6">
-            <h5>Appointments By Month</h5>
-            <canvas id="lineChart" height="250"></canvas>
+    <!-- Bar Chart -->
+    <div class="mb-5">
+        <h4>Appointments per Doctor</h4>
+        <div style="max-width: 700px; margin: auto;">
+            <canvas id="barChart"></canvas>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h5>Appointments By Specialty</h5>
-            <canvas id="pieChart" height="250"></canvas>
+    <!-- Line Chart -->
+    <div class="mb-5">
+        <h4>Monthly Appointment Trends</h4>
+        <div style="max-width: 700px; margin: auto;">
+            <canvas id="lineChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Pie Chart -->
+    <div class="mb-5">
+        <h4>Appointments by Specialty</h4>
+        <div style="max-width: 700px; margin: auto;">
+            <canvas id="pieChart"></canvas>
         </div>
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
-    // Bar Chart
-    new Chart(document.getElementById('barChart'), {
-        type: 'bar',
-        data: {
-            labels: [@Html.Raw(ViewBag.BarLabels)],
-            datasets: [{
-                label: 'Appointments',
-                data: [@Html.Raw(ViewBag.BarData)],
-                backgroundColor: 'rgba(0, 123, 255, 0.6)',
-                borderColor: 'rgba(0, 123, 255, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Appointments Per Doctor'
-                }
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Bar Chart
+        const barChart = new Chart(document.getElementById('barChart'), {
+            type: 'bar',
+            data: {
+                labels: [@Html.Raw(ViewBag.BarLabels)],
+                datasets: [{
+                    label: 'Appointments',
+                    data: [@ViewBag.BarData],
+                    borderWidth: 1
+                }]
             },
-            scales: {
-                y: {
-                    beginAtZero: true
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-    });
+        });
 
-    // Line Chart
-    new Chart(document.getElementById('lineChart'), {
-        type: 'line',
-        data: {
-            labels: [@Html.Raw(ViewBag.LineLabels)],
-            datasets: [{
-                label: 'Appointments',
-                data: [@Html.Raw(ViewBag.LineData)],
-                borderColor: 'rgba(75, 192, 192, 1)',
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                tension: 0.3,
-                fill: true
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Appointments Per Month'
-                }
+        // Line Chart
+        const lineChart = new Chart(document.getElementById('lineChart'), {
+            type: 'line',
+            data: {
+                labels: [@Html.Raw(ViewBag.LineLabels)],
+                datasets: [{
+                    label: 'Appointments',
+                    data: [@ViewBag.LineData],
+                    fill: false,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true
             }
-        }
-    });
+        });
 
-    // Pie Chart
-    new Chart(document.getElementById('pieChart'), {
-        type: 'pie',
-        data: {
-            labels: [@Html.Raw(ViewBag.PieLabels)],
-            datasets: [{
-                data: [@Html.Raw(ViewBag.PieData)],
-                backgroundColor: ['#007bff', '#ffc107', '#dc3545', '#28a745']
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Appointments By Specialty'
-                }
+        // Pie Chart
+        const pieChart = new Chart(document.getElementById('pieChart'), {
+            type: 'pie',
+            data: {
+                labels: [@Html.Raw(ViewBag.PieLabels)],
+                datasets: [{
+                    data: [@ViewBag.PieData],
+                    backgroundColor: [
+                        '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true
             }
-        }
-    });
-</script>
+        });
+    </script>
+}

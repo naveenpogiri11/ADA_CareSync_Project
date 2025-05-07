@@ -60,45 +60,37 @@ namespace CareSync.Controllers
 
         public IActionResult Chart()
         {
-            // 1. Bar Chart: Appointments per Doctor
-            var doctorAppointments = _context.Appointments
-                .GroupBy(a => a.DoctorID)
-                .Select(g => new
-                {
-                    DoctorID = g.Key,
-                    Count = g.Count()
-                })
-                .ToList();
 
-            ViewBag.BarLabels = string.Join(",", doctorAppointments.Select(x => $"'{x.DoctorID}'"));
+            var doctorAppointments = _context.Appointments
+         .Join(_context.Doctors,
+               appt => appt.DoctorID,
+               doc => doc.DoctorID,
+               (appt, doc) => new { doc.FirstName, appt.AppointmentID })
+         .GroupBy(x => x.FirstName)
+         .Select(g => new { DoctorName = g.Key, Count = g.Count() })
+         .ToList();
+
+            ViewBag.BarLabels = string.Join(",", doctorAppointments.Select(x => $"'{x.DoctorName}'"));
             ViewBag.BarData = string.Join(",", doctorAppointments.Select(x => x.Count));
 
-            // 2. Line Chart: Appointments per Month
+            // Line Chart: Appointments per Month
             var monthlyAppointments = _context.Appointments
                 .GroupBy(a => a.AppointmentDate.Month)
-                .Select(g => new
-                {
-                    Month = g.Key,
-                    Count = g.Count()
-                })
-                .OrderBy(x => x.Month)
+                .Select(g => new { Month = g.Key, Count = g.Count() })
+                .OrderBy(g => g.Month)
                 .ToList();
 
             ViewBag.LineLabels = string.Join(",", monthlyAppointments.Select(x => $"'{System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(x.Month)}'"));
             ViewBag.LineData = string.Join(",", monthlyAppointments.Select(x => x.Count));
 
-            // 3. Pie Chart: Appointments by Specialty (requires join with Doctors)
+            // Pie Chart: Appointments by Specialty
             var specialtyAppointments = _context.Appointments
                 .Join(_context.Doctors,
                       a => a.DoctorID,
                       d => d.DoctorID,
-                      (a, d) => new { a, d })
-                .GroupBy(ad => ad.d.PrimarySpecialty)
-                .Select(g => new
-                {
-                    Specialty = g.Key,
-                    Count = g.Count()
-                })
+                      (a, d) => new { Specialty = d.PrimarySpecialty })
+                .GroupBy(x => x.Specialty)
+                .Select(g => new { Specialty = g.Key, Count = g.Count() })
                 .ToList();
 
             ViewBag.PieLabels = string.Join(",", specialtyAppointments.Select(x => $"'{x.Specialty}'"));

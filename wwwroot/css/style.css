@@ -1,0 +1,464 @@
+/* === GENERAL BODY === */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f9f9f9;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* === HEADER & NAVBAR === */
+.main-header {
+    background: #e8f0fe;
+    color: #003366;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid #cddafd;
+    font-size: 8rem; /* increase as desired */
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 8rem;
+}
+
+.logo-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: white;
+    padding: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.main-header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
+    color: #003366;
+}
+
+.nav-buttons a {
+    background: white;
+    color: #003366;
+    padding: 10px 20px;
+    margin: 6px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.3rem;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+    .nav-buttons a:hover {
+        background: #d7e7ff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+/* === HERO SECTION === */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient( rgba(0, 123, 255, 0.6), rgba(0, 123, 255, 0.6) ), url('../images/hero-bg.jpg') no-repeat center center / cover;
+    color: white;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+    .hero-content h2 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+        font-weight: 400;
+        line-height: 1.6;
+        color: #f1f1f1;
+    }
+
+.btn {
+    background: #007BFF;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+    .btn:hover {
+        background: #0056b3;
+    }
+
+/* === FEATURES SECTION === */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 20px;
+    background: #e8f0fe;
+    flex-wrap: wrap;
+}
+
+.feature {
+    max-width: 300px;
+    text-align: center;
+    margin: 10px;
+}
+
+/* === DOCTOR CARDS SECTION === */
+.doctors {
+    padding: 60px 20px;
+    text-align: center;
+    background: #f9f9f9;
+}
+
+    .doctors h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+.doctor-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 250px;
+    transition: 0.3s ease;
+}
+
+    .card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .card h4 {
+        margin-top: 15px;
+        font-weight: 600;
+    }
+
+    .card p {
+        margin: 5px 0 10px;
+        color: #555;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+/* === CRUD SECTION === */
+.crud-section {
+    padding: 60px 20px;
+    background: #f1f1f1;
+    text-align: center;
+}
+
+.crud-buttons {
+    margin-top: 20px;
+}
+
+    .crud-buttons a {
+        display: inline-block;
+        background-color: #007baf;
+        color: white;
+        padding: 12px 22px;
+        margin: 10px;
+        border-radius: 6px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background 0.3s ease;
+    }
+
+        .crud-buttons a:hover {
+            background-color: #005d87;
+        }
+
+/* === CRUD FORM === */
+.crud-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+    .crud-form label {
+        font-weight: 500;
+    }
+
+    .crud-form input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+
+/* === CRUD TABLE === */
+.crud-table {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+    .crud-table th, .crud-table td {
+        padding: 14px 16px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .crud-table th {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .crud-table tr:hover {
+        background-color: #f2f2f2;
+    }
+
+/* === CHARTS PAGE === */
+.chart-page {
+    padding: 30px 20px;
+}
+
+.chart-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* === ABOUT US – TEAM CARDS === */
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+
+.team-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 200px; 
+    flex-shrink: 0;
+}
+
+
+    .team-card img {
+        width: 160px;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+
+    .team-card p {
+        margin: 5px 0;
+        font-size: 0.95rem;
+    }
+
+
+/* === FOOTER === */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.crud-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: vertical;
+}
+
+/* === CONTACT === */
+.contact-section {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 30px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+    .contact-section h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #333;
+    }
+
+.contact-info p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.contact-link {
+    color: #007bff;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+    .contact-link:hover {
+        color: #0056b3;
+    }
+
+.full-width-body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.btn-nav {
+    background-color: white;
+    color: #003366;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    font-size: 2.5rem;
+}
+
+    .btn-nav:hover {
+        background-color: #d7e7ff;
+        color: #001f4d;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+/* Center the navbar links */
+.nav-center {
+    justify-content: center;
+}
+.logo-text {
+    font-size: 2rem; /* or whatever size you like */
+    font-weight: 700;
+    color: #003366;
+}
+/* === PRIVACY PAGE === */
+.privacy-container {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+    .privacy-container h1 {
+        font-size: 2.2rem;
+        color: #003366;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .privacy-container p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #444;
+        margin-bottom: 20px;
+    }
+
+
+.btn-edit {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.btn-details {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+    .btn-edit:hover,
+    .btn-details:hover,
+    .btn-delete:hover {
+        opacity: 0.8;
+        cursor: pointer;
+    }

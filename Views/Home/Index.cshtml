@@ -2,7 +2,71 @@
     ViewData["Title"] = "Home";
 }
 
-<div class="container mt-5">
-    <h1>Welcome to CareSync</h1>
-    <p>Your trusted platform to book doctor appointments easily and securely.</p>
-</div>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h2>Welcome to CareSync</h2>
+        <p>Your trusted platform to connect with doctors and book appointments effortlessly.</p>
+        <a href="#booking" class="btn">Get Started</a>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="feature">
+        <h3>Find Doctors</h3>
+        <p>Browse by specialty, location, or availability.</p>
+    </div>
+    <div class="feature">
+        <h3>Book Instantly</h3>
+        <p>Schedule appointments in real time with zero hassle.</p>
+    </div>
+    <div class="feature">
+        <h3>Secure Health Data</h3>
+        <p>We ensure your records are private and protected.</p>
+    </div>
+</section>
+
+<!-- Available Doctors -->
+<section class="doctors" id="booking">
+    <h2>Available Doctors</h2>
+    <div class="doctor-cards">
+        <div class="card">
+            <img src="~/images/doctor1.jpg" alt="Dr. Suzanne Holroyd" />
+            <h4>Dr. Suzanne Holroyd</h4>
+            <p>Plastic Surgeon</p>
+            <a href="/Appointment/Create" class="btn">Book Now</a>
+        </div>
+        <div class="card">
+            <img src="~/images/doctor2.jpg" alt="Dr. John P. DiMarco" />
+            <h4>Dr. Mathew DiMarco</h4>
+            <p>Neurosurgery</p>
+            <a href="/Appointment/Create" class="btn">Book Now</a>
+        </div>
+        <div class="card">
+            <img src="~/images/doctor7.jpg" alt="Dr. Kathie L. Hullfish" />
+            <h4>Dr. Kathie L. Hullfish</h4>
+            <p>Gynecologist</p>
+            <a href="/Appointment/Create" class="btn">Book Now</a>
+        </div>
+        <div class="card">
+            <img src="~/images/doctor4.jpg" alt="Dr. Jeniffer Wingstone" />
+            <h4>Dr. Jeniffer Wingstone</h4>
+            <p>Family Practice</p>
+            <a href="/Appointment/Create" class="btn">Book Now</a>
+        </div>
+        <div class="card">
+            <img src="~/images/doctor5.jpg" alt="Dr. Amanda Doe" />
+            <h4>Dr. Amanda G. Doe</h4>
+            <p>Internal Medicine</p>
+            <a href="/Appointment/Create" class="btn">Book Now</a>
+        </div>
+        <div class="card">
+            <img src="~/images/doctor6.jpg" alt="Dr. Robert Fisher" />
+            <h4>Dr. Robert Patric Fisher</h4>
+            <p>Gastroenterologist </p>
+            <a href="/Appointment/Create" class="btn">Book Now</a>
+        </div>
+    </div>
+</section>
